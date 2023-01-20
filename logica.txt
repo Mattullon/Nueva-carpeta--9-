@@ -1,4 +1,0 @@
-// para una unidad necesitamos saber su vida util y entonces necesitamos saber cual es el segundo con menos horas de la unidad para saber cuando cambiar 
-
-//como logramos eso ? ordenar con el arreglo.sort() asi podes quitar el arreglo[1] que seria el segundo menor de vuelta asi sabemos cuanto es el segundo con menos horas y sabemos la vida util de la unidad
-// importante saber cuanto es la vida util de la unidad por que asi podemos iterar menos cosas 
