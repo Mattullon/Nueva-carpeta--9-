@@ -1,59 +1,45 @@
 function rand() {
-  return Math.floor(Math.random() * (200 - 100 + 1)) + 100;
-}
-
-let workHours = Math.floor(15 * 5 * 9 * 4); //all hours of the year
-//console.log(workHours);
-
-let tubesFluorecent = [0, 0, 0, 0];
-let tubesBroken = 0;
-let contTubes;
-let initialMoney = 28; // 7 * 4 initial money of the year
-for (let unit = 0; unit < 4; unit++) {
-  //simulation of the 4 units
-
-  workHours = 2700;
-  for (let i = 0; i <= workHours; i++) {
-    // simulation of a unit
-    tubesFluorecent = [rand(), rand(), rand(), rand()];
-    tubesFluorecent.sort(); // we sort the array
-    let firtFlu = tubesFluorecent[0];
-    let secundFlu = tubesFluorecent[1];
-    if (workHours > 100) {
-      if (workHours >= firtFlu) {
-        workHours = workHours - firtFlu;
-        tubesBroken += 1;
-        contTubes = +1;
-
-        if (workHours >= secundFlu) {
-          workHours = workHours - secundFlu;
-          tubesBroken += 1;
-          contTubes += 1;
+    return Math.floor(Math.random() * (200 - 100 + 1)) + 100;
+  }
+  
+  // variables
+  let units = [];
+  let totalCost = 0;
+  let brokenTubesCount = 0;
+  
+  // Inicializamos units as a 4x4 matrix
+  for (let i = 0; i < 4; i++) {
+    units[i] = [];
+    for (let j = 0; j < 4; j++) {
+      units[i][j] = rand();
+    }
+  }
+  
+  // Initialize totalCost with the firt 16 tubes of the year
+  totalCost = 16 * 7;
+  
+  // Loop for hours in a year (15 hours a day * 5 days a week * 9 months a year)
+  for (let hour = 1; hour <= 675 ; hour++) {
+    for (let i = 0; i < units.length; i++) {
+      let brokenInUnit = 0;
+      for (let j = 0; j < units[i].length; j++) {
+        units[i][j]--;
+        if (units[i][j] === 0) {
+          brokenTubesCount++;
+          brokenInUnit++;
+          if (brokenInUnit === 2) {
+            units[i] = [];
+            for (let k = 0; k < 4; k++) {
+              units[i][k] = rand();
+            }
+            totalCost += 4 * 7;
+          }
         }
-
-        if (workHours <= secundFlu) {
-          workHours = 0;
-        }
-        if (contTubes === 2) {
-          //  when two fluorescent lights are burned
-          initialMoney += 7;
-          contTubes = 0;
-        }
-      }
-
-      if (workHours < 99) {
-        workHours = 0;
       }
     }
-
-    // console.log(tubesFluorecent);
-    // console.log(firtFlu);
-    // console.log(secundFlu);
-    // console.log(workHours);
   }
-}
-
-console.log(`fluorescent tubes were broken in 1 year are: ${tubesBroken}`);
-console.log(
-  `the money that fluorescent tubes cost the University per year per classroom is :${initialMoney} USD`
-);
+  // Result
+  console.log("Broken Tubes Count: " + brokenTubesCount);
+  console.log("Total Cost: " + totalCost + " U$D");
+  
+  //Sometimes the number generated is the same, only replay it multiple times
