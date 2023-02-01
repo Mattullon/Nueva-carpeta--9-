@@ -19,7 +19,7 @@ function rand() {
   totalCost = 16 * 7;
   
   // Loop for hours in a year (15 hours a day * 5 days a week * 9 months a year)
-  for (let hour = 1; hour <= 675 ; hour++) {
+  for (let hour = 1; hour <= 2700 ; hour++) {
     for (let i = 0; i < units.length; i++) {
       let brokenInUnit = 0;
       for (let j = 0; j < units[i].length; j++) {
