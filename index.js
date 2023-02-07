@@ -18,7 +18,7 @@ function rand() {
   // Initialize totalCost with the firt 16 tubes of the year
   totalCost = 16 * 7;
   const brokenInUnit = [0,0,0,0];
-  console.log(brokenInUnit)
+  //console.log(brokenInUnit)
 
   // Loop for hours in a year (15 hours a day * 5 days a week * 9 months a year)
   for (let hour = 1; hour <= 2700 ; hour++) {
