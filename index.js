@@ -14,21 +14,24 @@ function rand() {
       units[i][j] = rand();
     }
   }
-  
+  console.log(units)
   // Initialize totalCost with the firt 16 tubes of the year
   totalCost = 16 * 7;
-  
+  const brokenInUnit = [0,0,0,0];
+  console.log(brokenInUnit)
+
   // Loop for hours in a year (15 hours a day * 5 days a week * 9 months a year)
   for (let hour = 1; hour <= 2700 ; hour++) {
     for (let i = 0; i < units.length; i++) {
-      let brokenInUnit = 0;
+      //brokenInUnit = [0,0,0,0];
       for (let j = 0; j < units[i].length; j++) {
         units[i][j]--;
-        if (units[i][j] === 0) {
+        if (units[i][j] === 0 ) {//creo que aca esta el problema 
           brokenTubesCount++;
-          brokenInUnit++;
-          if (brokenInUnit === 2) {
+          brokenInUnit[i]++;
+          if (brokenInUnit[i] === 2) {
             units[i] = [];
+            brokenInUnit[i]= 0
             for (let k = 0; k < 4; k++) {
               units[i][k] = rand();
             }
