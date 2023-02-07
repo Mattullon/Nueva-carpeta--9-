@@ -26,7 +26,7 @@ function rand() {
       //brokenInUnit = [0,0,0,0];
       for (let j = 0; j < units[i].length; j++) {
         units[i][j]--;
-        if (units[i][j] === 0 ) {//creo que aca esta el problema 
+        if (units[i][j] === 0 ) {
           brokenTubesCount++;
           brokenInUnit[i]++;
           if (brokenInUnit[i] === 2) {
