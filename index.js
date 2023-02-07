@@ -14,7 +14,7 @@ function rand() {
       units[i][j] = rand();
     }
   }
-  console.log(units)
+  //console.log(units)
   // Initialize totalCost with the firt 16 tubes of the year
   totalCost = 16 * 7;
   const brokenInUnit = [0,0,0,0];
